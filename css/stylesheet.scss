@@ -1,0 +1,992 @@
+@import "foundation/reset";
+@import "layout/common";
+
+/* header section */
+.header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+
+    &-wrap {
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5em 1.8em;
+    }
+
+    &__logo {
+        width: 4.5em; /* 72px */
+    }
+
+    &__menu {
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include mq('tb'){
+            font-size: 1.2rem;
+        }
+
+        @include mq('sp'){
+            display: none;
+        }
+
+        &__item:not(:last-of-type){
+            margin-right: 1em;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1em 1.8em;
+            margin-right: -1.8em;
+            transition: all .3s;
+
+            &:hover {
+                transform: scale(1, 1);
+                color: #000;
+                background-color: #eaeaea;
+            }
+        } 
+
+        &__item__link:not(.contact-btn) {
+            position: relative;
+            display: inline-block;
+
+            &:after {
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background: $main-color--dark;
+                transform: scale(0, 1);
+                transform-origin: left top;
+                transition: transform .3s;
+            }
+
+            &:hover:after {
+                transform: scale(1, 1);
+                color: $main-color--dark;
+            }
+        }
+
+    }
+
+    /* スマホ用メニュー */
+    .sp-only {
+        display: none;
+
+        .drawer-toggle.drawer-hamburger {
+            right: 1.8em;
+        }
+
+        .drawer-hamburger {
+            width: 3rem;
+            padding: .9em;
+
+        }
+
+        .drawer-nav {
+            background-color: rgba(255,255,255,0.9);
+            text-align: center;
+        }
+        .drawer--right .drawer-nav {
+            right: -30rem;
+        }
+
+        .drawer-menu {
+            position: relative;
+            top: 6em;
+
+            &-item {
+                font-size: 1.4rem;
+                margin-bottom: 2.4em;
+                position: relative;
+            }
+        }
+
+        @include mq('sp') {
+            display: block;
+        }
+    }
+}
+
+.main {
+    width: 100%;
+
+    &__main-image {
+        background: url(../img/yoga-pose5.jpg) no-repeat center center;
+        background-size: cover;
+        position: relative;
+        height: 100vh;
+
+        @include mq('tb'){
+            height: 50vh;
+        }
+
+        @include mq('sp') {
+            height: 50vh;
+        }
+
+        &__slogan-image-wrap {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            transform: translateY(-50%);
+            width: 15%;
+
+            @include mq('sp') {
+                width: 20%;
+                top: 60%;
+                transform: translateY(-60%);
+                right: 18%;
+            }
+    
+        }
+    }
+}
+
+
+/* about section */
+.about-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @include mq('sp') {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+}
+
+.about__txt {
+    line-height: 2.5em;
+    display: block;
+    width: calc(100% / 2);
+
+    @include mq('sp') {
+        width: 100%;
+    }
+
+    &__main-txt-wrap {
+        margin-bottom: 3.5em;
+        line-height: 3.5em;
+        display: inline-block;
+        text-align: left;
+
+        @include mq('tb'){
+            margin-bottom: 2.8em;
+        }
+    }
+
+    &__main-txt {
+        font-size: $title-fontSize;
+
+        @include mq('tb'){
+            font-size: 2rem;
+        }
+
+        @include mq('sp') {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__sub-txt-wrap {
+        text-align: left;
+        display: inline-block;
+    }
+}
+
+.about__logo {
+    width: calc(100% / 2);
+
+    @include mq('sp') {
+        width: 70%;
+        padding: 0 0 1.5em;
+    }
+
+    &-img {
+        width: 80%;
+    }
+}
+
+
+/* class-intro section */
+.class-intro-wrap {
+    background-image: url(../img/class-intro.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    height: 12.5em;
+
+    @include mq('sp') {
+        height: 10em;
+        margin-bottom: 3.5em;
+    }
+}
+
+.class-intro__circle {
+    display: inline-block;
+    width: 20em;
+    height: 20em;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;  //文字の左右中央寄せ指定
+    line-height: 350px;  //高さの指定。line-heightとheightの値は合わせる
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+
+    @include mq('sp') {
+        width: 15em;
+        height: 15em;
+    }
+
+    &__txt-img-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 18em;  //円より少し小さい幅を指定
+
+        @include mq('sp') {
+            width: 12em;
+        }
+    } 
+}
+
+/* class-yao section */
+.class-yao {
+    background-color: $main-color;
+
+    .inner {
+        @extend %inner-pdTop-small; /* padding-top: 104px */
+
+        @include mq('sp') {
+            padding-top: 3.5em;
+        }
+    }
+
+    &__img-wrap {
+        width: 50%;
+
+        @include mq('tb') {
+            width: 80%;
+            margin: 0 auto 1.5em
+        }
+
+        @include mq('sp') {
+            width: 100%;
+            margin-bottom: 1.5em;
+        }
+    }
+
+    &__img {
+        border-radius: 10px;
+    }
+
+    &__class-wrap {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2.5em;
+
+        @include mq('tb') {
+            display: block;
+        }
+
+        @include mq('sp') {
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        &--flexReverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__class__sivananda {
+        margin-bottom: 10em;
+
+        @include mq('sp') {
+            margin-bottom: 8em;
+        }
+    }
+
+    &__txt {
+        width: 50%;
+
+        @include mq('tb') {
+            width: 80%;
+        }
+
+        @include mq('sp') {
+            width: 100%;
+        }
+        
+        &:first-of-type {
+            margin-left: 2em;
+
+            @include mq('tb') {
+                margin-left: auto;
+            }
+
+            @include mq('sp') {
+                margin-left: 0;
+            }
+        }
+
+        &:last-of-type {
+            margin-right: 2em;
+
+            @include mq('tb') {
+                margin-right: auto;
+            }
+        
+            @include mq('sp') {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__txt__titile-wrap {
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5em;
+
+        @include mq('sp') {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    &__txt__title {
+        font-size: $title-fontSize;
+
+        @include mq('sp') {
+            font-size: 2rem;
+            margin-bottom: 1em;
+        }
+    }
+
+    &__txt__place {
+        color: #fff;
+        border: 1.5px solid;
+        display: inline-block;
+        font-size: 1.4rem;
+        position: relative;
+        transition: all .3s;
+        padding: .3em .5em;
+
+        &:hover {
+            color: $main-color--dark;
+            transform: translate(0, -5px);
+        }
+
+    }
+
+        @include mq('sp') {
+            font-size: 1.4rem;
+        }
+
+
+    &__txt__list--balloon {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        font-size: 1.4rem;
+        padding: 2.5em;
+        line-height: 2;
+        margin-bottom: 2em;
+
+        @include mq('sp') {
+            font-size: 1.2rem;
+            padding: 1.5em;
+        }
+
+        &-top, &-bottom {
+            display: flex;
+        }
+
+        &__left {
+            width: 30%;
+        }
+
+        &__right {
+            width: 70%;
+        }
+
+    }
+
+    &__note {
+        font-size: 1.2rem;
+        margin-top: 1.5em;
+        text-align: left;
+
+        @include mq('sp') {
+            font-size: 1rem;
+        }
+    }
+
+    &__txt__detail {
+        font-size: 1.4rem;
+        line-height: 2;
+        margin-bottom: 1.3em;
+
+        @include mq('sp') {
+            font-size: 1.2rem;
+            padding: 0 1.3em;
+        }
+
+        &__txt {
+            margin-bottom: 1em;
+        }
+    }
+
+    &__contact-btn-wrap {
+        text-align: center;
+    }
+
+    &__contact-btn {
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 2rem;
+        padding: .5em 2em;
+        width: 70%;
+        text-align: center;
+
+        @include mq('sp') {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+/* sub-class section */
+.sub-class {
+
+    .inner {
+        @extend %inner-pd-small; /* padding: 104px 0 */
+
+        @include mq('sp') {
+            padding: 4em 0 3.5em;
+        }
+    }
+
+    &__title {
+        margin-bottom: 1.2em;
+    }
+
+    &__subtitle {
+        margin-bottom: 6em;
+
+        @include mq('sp') {
+            margin-bottom: 3.5em;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        @include mq('sp') {
+            display: block;
+        }
+
+        &__item {
+            width: calc((100% - 4em)/3);
+            
+            &:not(:last-of-type) {
+                margin-right: 2em;
+
+                @include mq('sp') {
+                    margin-right: auto;
+                }
+        
+            }
+
+            @include mq('sp') {
+                width: 80%;
+                margin: 0 auto 4em;
+            }
+            
+            &__txt__title {
+                background-color: $main-color;
+                border-radius: 5px;
+                font-weight: bold;
+                margin-bottom: 1em;
+                text-align: center;
+                padding: 1em 0;
+                width: 100%;
+                transition: all .3s;
+                display: inline-block;
+                    
+                &:hover {
+                    background-color: $main-color--dark;
+                    color: #fff;
+                    transform: translate(0, -5px);
+                }
+            }
+
+            &__txt__schedule-wrap { 
+                font-size: 1.2rem;
+                display: inline-block; /* 左寄せの中央寄せ指定 */ 
+
+            }
+
+            &__txt__shcedule__title {
+                font-weight: bold;
+                text-align: left; /* 左寄せの中央寄せ指定 */
+            }
+
+            &__txt__schedule__time {
+                margin-bottom: 1em;
+                text-indent: 1em; /* 字下げ */
+                text-align: left; /* 左寄せの中央寄せ指定 */
+            }
+        }
+    }
+}
+
+
+/* ticket section */
+
+.ticket {
+    .inner {
+        @extend %inner-pd-small; /* padding: 104px 0 */
+
+        @include mq('sp') {
+            padding: 4em 0 3.5em;
+        }
+    }
+
+    &__top__bg-wrap {
+        background-color: $highlight-sub;
+        position: relative;
+
+        &:after{  /* 吹き出しの三角形 */
+            content:'';
+            width: 0;
+            height: 0;
+            border: 40px solid transparent;
+            border-top: 40px solid $highlight-sub;
+            position: absolute;
+            left: 50%;
+            bottom: -80px; //三角の大きさの2倍にする
+            transform: translateX(-50%);
+        }
+    }
+
+    &__top__balloon {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 3em 2em 4em;
+        margin: 0 15em;
+
+        @include mq('tb') {
+            margin: 0 5em;
+        }
+
+        @include mq('sp') {
+            padding: 2em 0 3em;
+            margin: 0 1.5em;
+        }
+
+        &__price {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: .7em;
+
+            @include mq('sp') {
+                font-size: 4.2rem;
+            }
+        }
+
+        &__detail {
+            font-size: $title-fontSize;
+
+            @include mq('sp') {
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    &__bottom-inner {
+        padding-top: 5em;  /* 80px */
+    }
+
+    &__bottom__list {  
+        display: inline-block; /* 左寄せの中央寄せ指定 */ 
+        font-size: 2rem;
+        margin-bottom: 2em;
+        padding-left: 0;
+
+        @include mq('tb') {
+            padding: 0 2.5em;
+        }
+
+        @include mq('sp') {
+            font-size: 1.4rem;
+        }
+
+        &__item {
+            text-align: left; /* 左寄せの中央寄せ指定 */
+            padding-left: 1em;
+            text-indent: -1em;
+            margin-bottom: 1em;
+        }
+    }
+
+    .fa-check-square {
+        margin-right: .5em;
+        margin-left: 1em;
+    }
+
+    &__bottom__balloon {
+        border: 1px solid #000;
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 2.8;
+        margin: 0 12em;
+        padding: 1.5em 0;
+
+        @include mq('tb') {
+            margin: 0 4em;
+        }
+
+        @include mq('sp') {
+            font-size: 1.4rem;
+            line-height: 2;
+            margin: 0 3em;
+        }
+    }
+}
+
+
+/* voice section */
+.voice {
+    background-image: url(../img/voice-bg.png);
+    background-repeat: repeat;
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @include mq('sp') {
+            display: block;
+        }
+
+        &__item {
+            width: calc((100% - 2em)/3);
+            position: relative;
+            margin-bottom: 4em;
+
+            @include mq('tb') {
+                width: calc((100% - 2em)/2);
+            }
+
+            @include mq('sp') {
+                width: 100%;
+                font-size: 1.2rem;
+            }
+        }
+
+        &__item--circle {
+            width:  20em;
+            height: 20em;
+            border-radius: 50%;
+            background: #fff;/*背景色*/
+            display: inline-block;
+            text-align: center;  //文字の左右中央寄せ指定
+        }
+
+        &__item__txt-wrap {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 15em;
+            line-height: 2;
+            // @include mq('tb') {
+            //     width: 10em;
+            // }
+    
+        }
+
+        &__item__txt {
+            margin-bottom: .8em;
+        }
+    }
+}
+
+/* profile section */
+.profile {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    background-color: #fff;
+    z-index: 1;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3em;
+
+        @include mq('tb') {
+            align-items: center;
+        }
+
+        @include mq('sp') {
+            display: block;
+        }
+
+        &__right {
+            width: calc(100% / 3);
+
+            @include mq('tb') {
+                width: 40%;
+            }
+
+            @include mq('sp') {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+
+        &__left {
+            width: calc((100% / 3)*2);
+            text-align: left;
+            margin-left: 5em;
+
+            @include mq('tb') {
+                width: 60%;
+                margin-left: 2em;
+            }
+
+            @include mq('sp') {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            &__nameSns-wrap {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 3.5em;
+
+                @include mq('tb') {
+                    margin-bottom: 1em;
+                }    
+
+                @include mq('sp') {
+                    flex-direction: column;
+                    line-height: 2.5;
+                    margin-bottom: 1em;
+                }
+            }
+
+            &__nameSns__name--large {
+                font-size: 3.6rem;
+                font-weight: bold;
+                margin: 0 .2em 0 .7em;
+            }
+
+            &__licence {
+                line-height: 2.5;
+                background-color: #eaeaea;
+                border-radius: 5px;
+                padding: 2em 3em;
+
+
+                &__item {  /* 2行目から字下げ指定 */
+                    padding-left: 1em;
+                    text-indent: -1.2em;
+                }
+
+                @include mq('sp') {
+                    padding: 2em;
+                }
+
+                .fa-spa {
+                    margin-right: 1em;
+                }
+            }
+        }
+    }
+
+    &__bottom--line {
+        &:first-of-type {
+            margin-bottom: 3.5em;
+
+            @include mq('sp') {
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        &:last-of-type {
+            margin-top: 3.5em;
+
+            @include mq('sp') {
+                margin-top: 2.5rem;
+            }
+        }
+    }
+
+    &__bottom__txt {
+        display: inline-block;
+        font-size: 1.4rem;
+        line-height: 2;
+        text-align: left;
+        width: 80%;
+
+        @include mq('sp') {
+            font-size: 1.2rem;
+        }
+
+        &__item:not(:last-of-type) {
+            margin-bottom: 1em;
+        }
+    }
+}
+
+
+/* contact section */
+.contact {
+    background-color: #eaeaea;
+
+    .inner {
+        @extend %inner-pdTop-small;
+
+        @include mq('sp') {
+            padding-top: 3.5em
+        }
+    }
+
+    &__title {
+        margin-bottom: 3.5em;
+
+        @include mq('sp') {
+            margin-bottom: 1.5em;
+        }
+    }
+
+    &__form {
+        display: block;
+        text-align: center;
+        width: 45%;
+        margin: 0 auto;
+
+        @include mq('tb') {
+            width: 60%;
+        }    
+
+        @include mq('sp') {
+            width: 80%;
+        }
+
+        &__item {
+            width: 100%;
+            margin-bottom: 2em;
+            display: block;
+            display: inline-block;
+
+            &__title {
+                margin-bottom: .5em;
+                text-align: left;
+            }
+
+            &__input, &__txtarea {
+                border: 1px solid #000;
+                background-color: #fff;
+                box-sizing: border-box;
+                padding: 1em;
+                width: 100%;
+                resize: vertical; /* 横方向の拡大を禁止し、縦のみリサイズを許可 */
+
+                &:focus {
+                    box-shadow: 0 0 7px $main-color;
+                    border: 1px solid $main-color;
+                }
+            }
+
+            &__txtarea {
+                height: calc(1.6em*4); /* 指定した line-height と同じ値でテキストエリアの高さを行数指定できる */
+            }
+        }
+    }
+
+    &__submit-btn-wrap {
+        text-align: center;
+    }
+
+    &__submit-btn {
+        background-color: $main-color--dark;
+        color: #fff;
+        text-align: center;
+        padding: 1em 3em;
+        width: 45%;
+        transition: all .3s;
+
+        &:hover {
+            background-color: $main-color;
+        }
+
+        @include mq('tb') {
+            width: 60%;
+        }
+
+
+    }
+
+}
+
+/* footer section */
+.footer__top {
+    color: #707070;
+    line-height: 2;
+    font-size: 1.4rem;
+
+    @include mq('sp') {
+        font-size: 1rem;
+    }
+
+    &__txt {
+        margin-bottom: 1.5em;
+    }
+
+    &__title {
+        font-weight: bold;
+    }
+}
+
+.footer__bottom {
+    background-color: $main-color;
+    color: #fff;
+    font-size: 1.2rem;
+
+    @include mq('sp') {
+        font-size: .6rem;
+    }
+
+    .inner {
+        padding: 5em 0;
+    }
+
+    .sns-btn {
+        margin-bottom: 1em;
+
+        &__line {
+            margin-left: .5em;
+        }
+    }
+}
